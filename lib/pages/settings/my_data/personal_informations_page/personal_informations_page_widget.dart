@@ -114,8 +114,8 @@ class _PersonalInformationsPageWidgetState
               size: 30.0,
             ),
             onPressed: () async {
-              context.pushNamed(
-                'MyDataPage',
+              context.goNamed(
+                'SettingsPage',
                 extra: <String, dynamic>{
                   kTransitionInfoKey: TransitionInfo(
                     hasTransition: true,

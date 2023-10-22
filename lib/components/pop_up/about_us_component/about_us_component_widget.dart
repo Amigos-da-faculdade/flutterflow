@@ -102,7 +102,8 @@ class _AboutUsComponentWidgetState extends State<AboutUsComponentWidget> {
                               20.0, 20.0, 20.0, 20.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
                                 'Sobre nós',

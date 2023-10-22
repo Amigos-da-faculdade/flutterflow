@@ -7,6 +7,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'ong_detail_model.dart';
@@ -199,14 +200,35 @@ class _OngDetailWidgetState extends State<OngDetailWidget> {
                         child: ExpandableNotifier(
                           controller: _model.expandableController,
                           child: ExpandablePanel(
-                            header: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 8.0, 0.0, 0.0),
-                              child: Text(
-                                'Sobre',
-                                style:
-                                    FlutterFlowTheme.of(context).headlineSmall,
-                              ),
+                            header: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 8.0, 0.0, 0.0),
+                                  child: Text(
+                                    'Sobre',
+                                    style: FlutterFlowTheme.of(context)
+                                        .headlineSmall,
+                                  ),
+                                ),
+                                FlutterFlowIconButton(
+                                  borderRadius: 20.0,
+                                  borderWidth: 1.0,
+                                  buttonSize: 40.0,
+                                  icon: FaIcon(
+                                    FontAwesomeIcons.globe,
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                    size: 24.0,
+                                  ),
+                                  onPressed: () async {
+                                    await launchURL(
+                                        'https://brasil.un.org/pt-br/sdgs/11');
+                                  },
+                                ),
+                              ],
                             ),
                             collapsed: Container(
                               width: MediaQuery.sizeOf(context).width * 1.0,

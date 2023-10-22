@@ -106,8 +106,8 @@ class _ConfigComponentWidgetState extends State<ConfigComponentWidget>
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
-                      context.pushNamed(
-                        'MyDataPage',
+                      context.goNamed(
+                        'PersonalInformationsPage',
                         extra: <String, dynamic>{
                           kTransitionInfoKey: TransitionInfo(
                             hasTransition: true,
@@ -338,7 +338,7 @@ class _ConfigComponentWidgetState extends State<ConfigComponentWidget>
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 12.0, 0.0),
                                     child: Text(
-                                      'Meus saldos e cartões',
+                                      'Meus cartões cadastrados',
                                       textAlign: TextAlign.start,
                                       style: FlutterFlowTheme.of(context)
                                           .labelSmall,

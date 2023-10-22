@@ -15,6 +15,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:octo_image/octo_image.dart';
 import 'package:provider/provider.dart';
+import 'package:simple_gradient_text/simple_gradient_text.dart';
 import 'home_page_model.dart';
 export 'home_page_model.dart';
 
@@ -1153,17 +1154,27 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   MainAxisAlignment
                                                       .spaceBetween,
                                               children: [
-                                                Text(
+                                                GradientText(
                                                   'Sobre Nós',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .headlineSmall,
+                                                  colors: [
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondary
+                                                  ],
+                                                  gradientDirection:
+                                                      GradientDirection.rtl,
+                                                  gradientType:
+                                                      GradientType.linear,
                                                 ),
                                                 Icon(
                                                   Icons.keyboard_arrow_right,
                                                   color: FlutterFlowTheme.of(
                                                           context)
-                                                      .primaryText,
+                                                      .primary,
                                                   size: 32.0,
                                                 ),
                                               ],
@@ -1222,43 +1233,72 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                           final carouselOngsRow =
                                               carouselOngsRowList[
                                                   carouselIndex];
-                                          return Material(
-                                            color: Colors.transparent,
-                                            elevation: 5.0,
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(10.0),
-                                            ),
-                                            child: Container(
-                                              width: 300.0,
-                                              height: 200.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
+                                          return InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              context.goNamed(
+                                                'OngDetail',
+                                                queryParameters: {
+                                                  'ongDetailRef':
+                                                      serializeParam(
+                                                    carouselOngsRow,
+                                                    ParamType.SupabaseRow,
+                                                  ),
+                                                }.withoutNulls,
+                                                extra: <String, dynamic>{
+                                                  kTransitionInfoKey:
+                                                      TransitionInfo(
+                                                    hasTransition: true,
+                                                    transitionType:
+                                                        PageTransitionType.fade,
+                                                    duration: Duration(
+                                                        milliseconds: 0),
+                                                  ),
+                                                },
+                                              );
+                                            },
+                                            child: Material(
+                                              color: Colors.transparent,
+                                              elevation: 5.0,
+                                              shape: RoundedRectangleBorder(
                                                 borderRadius:
                                                     BorderRadius.circular(10.0),
                                               ),
-                                              child: Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        6.0, 0.0, 6.0, 0.0),
-                                                child: ClipRRect(
+                                              child: Container(
+                                                width: 300.0,
+                                                height: 200.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
                                                   borderRadius:
                                                       BorderRadius.circular(
-                                                          8.0),
-                                                  child: OctoImage(
-                                                    placeholderBuilder:
-                                                        OctoPlaceholder
-                                                            .blurHash(
-                                                      carouselOngsRow.logo!,
+                                                          10.0),
+                                                ),
+                                                child: Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          6.0, 0.0, 6.0, 0.0),
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                    child: OctoImage(
+                                                      placeholderBuilder:
+                                                          OctoPlaceholder
+                                                              .blurHash(
+                                                        carouselOngsRow.logo!,
+                                                      ),
+                                                      image: NetworkImage(
+                                                        carouselOngsRow.logo!,
+                                                      ),
+                                                      width: double.infinity,
+                                                      height: double.infinity,
+                                                      fit: BoxFit.cover,
                                                     ),
-                                                    image: NetworkImage(
-                                                      carouselOngsRow.logo!,
-                                                    ),
-                                                    width: double.infinity,
-                                                    height: double.infinity,
-                                                    fit: BoxFit.cover,
                                                   ),
                                                 ),
                                               ),
